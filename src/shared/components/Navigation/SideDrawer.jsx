@@ -1,9 +1,11 @@
 import React from "react";
+import ReactDom from "react-dom";
 
 import "./SideDrawer.css";
 
 const SideDrawer = (props) => {
-  return <aside className="side-drawer">{props.children}</aside>;
+  const content = <aside className="side-drawer">{props.children}</aside>; // the props.children prop is used to render the content inside the side drawer.
+  return ReactDom.createPortal(content, document.getElementById("drawer-hook")); // createPortal is a method provided by React that allows you to render a component's content outside of the parent component's DOM hierarchy. we do this just because we want the side drawer to be rendered outside of the main content area of the application.
 };
 
 export default SideDrawer;
